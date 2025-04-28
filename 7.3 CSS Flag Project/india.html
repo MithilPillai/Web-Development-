@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Indian Flag with Ashoka Chakra</title>
+  <style>
+    .saffron {
+      height: 150px;
+      width: 800px;
+      background-color: orangered;
+    }
+
+    .white {
+      height: 150px;
+      width: 800px;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .green {
+      height: 150px;
+      width: 800px;
+      background-color: green;
+    }
+
+    .chakra {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      border: 5px solid blue;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chakra::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background-color: blue;
+      border-radius: 50%;
+      position: absolute;
+    }
+
+    .chakra .spoke {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: blue;
+    }
+
+    /* Creating 24 spokes */
+    @for $i from 1 through 24 {
+      .chakra .spoke:nth-child(#{$i}) {
+        transform: rotate(#{$i * 15}deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="saffron"></div>
+  <div class="white">
+    <div class="chakra">
+      <!-- Creating 24 spokes dynamically using span elements -->
+      <script>
+        const chakra = document.querySelector(".chakra");
+        for (let i = 0; i < 24; i++) {
+          let spoke = document.createElement("div");
+          spoke.className = "spoke";
+          spoke.style.transform = `rotate(${i * 15}deg)`;
+          chakra.appendChild(spoke);
+        }
+      </script>
+    </div>
+  </div>
+  <div class="green"></div>
+</body>
+
+</html>
